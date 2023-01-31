@@ -73,8 +73,10 @@ public class JobData {
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
-
+//Case insensitive
             String aValue = row.get(column);
+            aValue = aValue.toLowerCase();
+            value = value.toLowerCase();
 
             if (aValue.contains(value)) {
                 jobs.add(row);
@@ -101,9 +103,9 @@ public class JobData {
             for (HashMap<String, String> row : allJobs) {   //loop through each job in alljobs HM by row
                 for (Map.Entry<String, String> entry : row.entrySet()) { //loop through map.entry
                     String entryValue = entry.getValue(); //store in new value
-                // need case-insensitive, TA HELP: make sure input value is the same way
+                // need case-insensitive, TA HELP: also line 79
                     entryValue = entryValue.toLowerCase();
-                    value = value.toLowerCase();
+                    value = value.toLowerCase(); // TA HELP: make sure input value is the same way
                     if (entryValue.contains(value)) {
                 // Practice: IF done in single line...if(entry.getValue().toLowerCase().contains(value.toLowerCase()))
                         jobs.add(row);
