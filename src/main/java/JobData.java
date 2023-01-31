@@ -5,10 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -94,12 +91,26 @@ public class JobData {
      * @return      List of all jobs with at least one field containing the value
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
-
+        //search with input then return ALHM the input
         // load data, if not already loaded
         loadData();
 
         // TODO - implement this method
-        return null;
+        //so create jobs ALofHM, Kind of similar to above method.
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+            for (HashMap<String, String> row : allJobs) {   //loop through each job in alljobs HM by row
+                for (Map.Entry<String, String> entry : row.entrySet()) { //loop through map.entry
+                    String entryValue = entry.getValue(); //store in new value
+                // need case-insensitive, TA HELP: make sure input value is the same way
+                    entryValue = entryValue.toLowerCase();
+                    value = value.toLowerCase();
+                    if (entryValue.contains(value)) {
+                // Practice: IF done in single line...if(entry.getValue().toLowerCase().contains(value)
+                        jobs.add(row);
+                    }
+                }
+            }
+        return jobs;
     }
 
     /**
