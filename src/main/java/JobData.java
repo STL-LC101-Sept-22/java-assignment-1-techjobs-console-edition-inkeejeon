@@ -96,7 +96,7 @@ public class JobData {
         loadData();
 
         // TODO - implement this method
-        //so create jobs ALofHM, Kind of similar to above method.
+        //Kind of similar to above method. so Create jobs ALofHM
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
             for (HashMap<String, String> row : allJobs) {   //loop through each job in alljobs HM by row
                 for (Map.Entry<String, String> entry : row.entrySet()) { //loop through map.entry
@@ -105,7 +105,7 @@ public class JobData {
                     entryValue = entryValue.toLowerCase();
                     value = value.toLowerCase();
                     if (entryValue.contains(value)) {
-                // Practice: IF done in single line...if(entry.getValue().toLowerCase().contains(value)
+                // Practice: IF done in single line...if(entry.getValue().toLowerCase().contains(value.toLowerCase()))
                         jobs.add(row);
                     }
                 }
